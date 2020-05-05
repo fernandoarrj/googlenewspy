@@ -6,7 +6,7 @@ with open('README.md', 'r') as file:
 
 setuptools.setup(
     name='googlenewspy',
-    version='0.0.1',
+    version='0.0.2',
     author='Fernando Rodrigues',
     author_email='fernandoarrj@gmail.com',
     description='Scraping google news',
@@ -20,4 +20,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
+    install_requires=['requests']
 )

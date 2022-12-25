@@ -5,13 +5,15 @@ from .parse import ParseSearch
 
 
 class Search:
-    def __init__(self, host_language='pt-BR', geolocation='BR'):
+    def __init__(self, host_language='en-US', geolocation='US', ceid="US-en", when='30d'):
         """
             The user can set host language and geolocation
             for better search results.
         """
+        self.when = when
         self.geolocation = geolocation
         self.host_language = host_language
+        self.ceid = ceid
         self.url_base = 'https://news.google.com'
 
     def get(self, url):
@@ -24,8 +26,11 @@ class Search:
 
     def news(self, text):
         """Get news with some text"""
-        url = (f'{self.url_base}/search?q={text}'
-              f'&hl={self.host_language}&gl=${self.geolocation}')
+        text_query = 'q="{text}"'
+        if self.when != None:
+             text_query += ' when:{self.when}'
+        url = (f'{self.url_base}/search?q="{text}" when:{self.when}'
+              f'&hl={self.host_language}&gl={self.geolocation}&ceid={self.ceid}')
 
         html = self.get(url)
         parsed_data = ParseSearch().handle(html)

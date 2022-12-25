@@ -18,8 +18,8 @@ text = 'Python'\
 search.news(text)
 
 ## Features
-You can specify witch country and host language in Search object, for better results.
+You can specify witch country, host language, and time frame in Search object, for better results.
 Ex:
-> search = Search(host_language='en-US', geolocation='US')\
+> search = Search(host_language='en-US', geolocation='US', when='1h')\
 > search.news('Python')
 
